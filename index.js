@@ -184,12 +184,6 @@ function view_department(dataonly, callback) {
 //DEPARTMENT FUNCTIONS
 function add_department() {
 
-    let question = {
-        type: 'input',
-        name: 'new_dept',
-        message: 'Please enter the new department name',
-    }
-
     //First let's ask the user what he/she wishes to name the department
     inquirer.prompt([app_question.add_department])
     .then(res => {
@@ -205,6 +199,7 @@ function add_department() {
             `INSERT INTO department (name) VALUES ('${res.new_dept}')`,
             function(err, results) {
 
+                console.log(err);
                 if(err !== null) {
                     console.log('Something went wrong, restart application and try again.');
                     return false;
